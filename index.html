@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Phone</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="main">
+        <div id="fs">
+            <div class="modal" id="modal">
+                <h2>Baby Toy Phone</h2>
+                <h4>Dhoom chale Dhoom..!</h4>
+                <ul>
+                    <li>Press any key for song</li>
+                    <li>Only Made for badeBachche</li>
+                </ul>
+                <button id="okBtn">OK</button>
+            </div>
+        </div>
+        <div class="phone">
+            <div class="screen">
+                <div class="dialPad">
+                    <button class="btn">1</button>
+                    <button class="btn">2</button>
+                    <button class="btn">3</button>
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <button class="btn">6</button>
+                    <button class="btn">7</button>
+                    <button class="btn">8</button>
+                    <button class="btn">9</button>
+                    <button class="btn" id="btn0">0</button>
+                    <button class="btn">&lArr;</button>
+                </div>
+            </div>
+            <div class="camera"></div>
+            <div class="home-button"></div>
+        </div>
+        <audio class="a1" src="Dhoom Machale.mp3"></audio>
+        <audio class="a2" src="./Babys Toy.mp3"></audio>
+        <audio class="a3" src="./Toy Phone .mp3"></audio>
+    </div>
+
+    <script>
+        var btn = document.querySelector(".screen");
+        var a1 = new Audio('Dhoom Machale.mp3');
+        var a2 = new Audio('Babys Toy.mp3');
+        var a3 = new Audio('Toy Phone .mp3');
+
+        window.onload = function(){
+            document.querySelector("#modal").style.top = "50%";
+            document.querySelector("#modal").style.opacity = 1;
+        }
+
+        document.querySelector("#okBtn").addEventListener("click", function(){
+            document.querySelector("#modal").style.top = "40%";
+            document.querySelector("#modal").style.opacity = 0;
+            document.querySelector("#fs").style.opacity = 0;
+            setTimeout(function(){
+                document.querySelector("#fs").style.zIndex = "-1";
+            }, 5000);
+        })
+
+        btn.addEventListener("click", function(dets){
+            // console.log(dets.target.textContent); //btn ni andr nu content print thay
+            play();
+        })
+
+        function play(){
+            var rn = Math.floor(Math.random()*3);
+            console.log(rn);
+            if(rn === 0){
+                a2.pause();
+                a3.pause();
+                a1.play();
+                // play();
+            }else if(rn === 1){
+                a1.pause();
+                a3.pause();
+                a2.play();
+                // play();
+            }else{
+                a1.pause();
+                a2.pause();
+                a3.play();
+                // play();
+            }
+        }
+    </script>
+</body>
+</html>
